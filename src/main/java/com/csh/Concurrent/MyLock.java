@@ -17,7 +17,7 @@ public class MyLock implements Lock {
         //获取锁
         @Override
         protected boolean tryAcquire(int arg) {
-            int state =getState();
+            int state = getState();
             if(state==0){
                 //利用CAS原理修改state
                 if(compareAndSetState(0,arg)){
@@ -25,12 +25,11 @@ public class MyLock implements Lock {
                     setExclusiveOwnerThread(Thread.currentThread());
                     return true;
                 }
-                //判断可重入锁
-                else if(getExclusiveOwnerThread() == Thread.currentThread()){
-                    setState(getState() + arg);
-                    return true;
-                }
-
+            }
+            //判断可重入锁
+            else if(getExclusiveOwnerThread()==Thread.currentThread()){
+                setState(getState()+arg);
+                return true;
             }
             return false;
         }
@@ -53,7 +52,7 @@ public class MyLock implements Lock {
             return false;
         }
 
-        public Condition newConfitionObject(){
+        public Condition newConditionObjecct(){
             return new ConditionObject();
         }
     }
@@ -88,7 +87,7 @@ public class MyLock implements Lock {
 
     @Override
     public Condition newCondition() {
-        return helper.newConfitionObject();
+        return helper.newConditionObjecct();
     }
 }
 
