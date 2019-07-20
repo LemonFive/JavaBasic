@@ -12,26 +12,26 @@ import static java.lang.System.out;
 /**
  * 验证  BiasedLockingBulkRebiasThreshold 是针对对象集合的
  */
-public class BiasedLockJOLTest {
+public class BiasedLockJOLTest1 {
 
 
     public static void main(String[] args) throws Exception {
         Thread.sleep(6000);
 //        a = new A();
-        List<A> list = new ArrayList<>();
-        List<B> list2 = new ArrayList<>();
+        List<A> listA = new ArrayList<>();
+        List<B> listB = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            list.add(new A());
-            list2.add(new B());
+            listA.add(new A());
+            listB.add(new B());
         }
 
         Thread t1 = new Thread() {
-            String name = "1";
+            @Override
             public void run() {
-                out.printf(name);
-                for (A a : list) {
+                out.printf(Thread.currentThread().getName());
+                for (A a : listA) {
                     synchronized (a) {
-                        if (a == list.get(10))
+                        if (a == listA.get(10))
                             out.println("t1 预期是偏向锁"+10 + ClassLayout.parseInstance(a).toPrintable());//偏向锁
                     }
                 }
@@ -44,25 +44,24 @@ public class BiasedLockJOLTest {
         };
         t1.start();
         Thread.sleep(5000);
-        out.println("main 预期是偏向锁"+10 + ClassLayout.parseInstance(list.get(10)).toPrintable());//偏向锁
+        out.println("main 预期是偏向锁"+10 + ClassLayout.parseInstance(listA.get(10)).toPrintable());//偏向锁
 
         Thread t2 = new Thread() {
-            String name = "2";
-
+            @Override
             public void run() {
-                out.printf(name);
+                out.printf(Thread.currentThread().getName());
 
                 for(int i = 0;i<100;i++){
-                    A a = list.get(i);
+                    A a = listA.get(i);
                     synchronized (a) {
-                        if ( a == list.get(10)) {
-                            out.println("t2 i=10 get(1)预期是无锁" +  ClassLayout.parseInstance(list.get(1)).toPrintable());//偏向锁
-                            out.println("t2 i=10 get(10) 预期轻量级锁 " + i + ClassLayout.parseInstance(a).toPrintable());//偏向锁
+                        if ( a == listA.get(10)) {
+                            out.println("t2 i=10 get(1)预期是无锁" +  ClassLayout.parseInstance(listA.get(1)).toPrintable());//无锁
+                            out.println("t2 i=10 get(10) 预期轻量级锁 " + i + ClassLayout.parseInstance(a).toPrintable());   //轻量锁
                         }
-                        if ( a == list.get(19)) {
-                            out.println("t2  i=19  get(10)预期是无锁" + 10 + ClassLayout.parseInstance(list.get(10)).toPrintable());//偏向锁
+                        if ( a == listA.get(19)) {
+                            out.println("t2  i=19  get(10)预期是无锁" + 10 + ClassLayout.parseInstance(listA.get(10)).toPrintable());//无锁
                             out.println("t2  i=19  get(19) 满足重偏向条件20 预期偏向锁 " + i + ClassLayout.parseInstance(a).toPrintable());//偏向锁
-                            out.println("t2  i=19  get(40) 满足重偏向条件20 预期偏向锁被批量重重偏向 " + i + ClassLayout.parseInstance(list.get(40)).toPrintable());//偏向锁
+                            out.println("t2  i=19  get(40) 满足重偏向条件20 预期偏向锁被批量重重偏向 " + i + ClassLayout.parseInstance(listA.get(40)).toPrintable());//偏向锁
                         }
                     }
                 }
@@ -89,9 +88,9 @@ public class BiasedLockJOLTest {
             public void run() {
 
                 out.printf(name);
-                for (B b : list2) {
+                for (B b : listB) {
                     synchronized (b) {
-                        if (b == list2.get(10))
+                        if (b == listB.get(10))
                             out.println("t3 预期是偏向锁"+10 + ClassLayout.parseInstance(b).toPrintable());//偏向锁
 
                     }
@@ -116,16 +115,16 @@ public class BiasedLockJOLTest {
                 out.printf(name);
 
                 for(int i = 0;i<100;i++){
-                    B b = list2.get(i);
+                    B b = listB.get(i);
                     synchronized (b) {
-                        if ( b == list2.get(10)) {
-                            out.println("t4 i=10 get(1)预期是无锁" +  ClassLayout.parseInstance(list2.get(1)).toPrintable());//偏向锁
+                        if ( b == listB.get(10)) {
+                            out.println("t4 i=10 get(1)预期是无锁" +  ClassLayout.parseInstance(listB.get(1)).toPrintable());//偏向锁
                             out.println("t4 i=10 get(10) 预期轻量级锁 " + i + ClassLayout.parseInstance(b).toPrintable());//偏向锁
                         }
-                        if ( b == list2.get(19)) {
-                            out.println("t4  i=19  get(10)预期是无锁" + 10 + ClassLayout.parseInstance(list2.get(10)).toPrintable());//偏向锁
+                        if ( b == listB.get(19)) {
+                            out.println("t4  i=19  get(10)预期是无锁" + 10 + ClassLayout.parseInstance(listB.get(10)).toPrintable());//偏向锁
                             out.println("t4  i=19  get(19) 满足重偏向条件20 预期偏向锁  " + i + ClassLayout.parseInstance(b).toPrintable());//偏向锁
-                            out.println("t4  i=19  get(40) 满足重偏向条件20 预期偏向锁被批量重重偏向 " + i + ClassLayout.parseInstance(list2.get(40)).toPrintable());//偏向锁
+                            out.println("t4  i=19  get(40) 满足重偏向条件20 预期偏向锁被批量重重偏向 " + i + ClassLayout.parseInstance(listB.get(40)).toPrintable());//偏向锁
                         }
                     }
                 }

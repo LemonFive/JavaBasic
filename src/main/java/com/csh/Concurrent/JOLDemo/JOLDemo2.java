@@ -15,6 +15,9 @@ public class JOLDemo2 {
 
         out.println(ClassLayout.parseInstance(a).toPrintable());
 
+        //
+        out.println(ClassLayout.parseInstance(A.class).toPrintable());
+
         synchronized (a){
             out.println("同步代码块中");
             out.println(ClassLayout.parseInstance(a).toPrintable());
