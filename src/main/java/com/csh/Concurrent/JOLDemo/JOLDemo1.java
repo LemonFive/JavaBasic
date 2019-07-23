@@ -26,7 +26,13 @@ public class JOLDemo1 {
                 synchronized (a){
                     out.println("thread1 locking");
                     out.println(ClassLayout.parseInstance(a).toPrintable());
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         };
 
@@ -36,6 +42,11 @@ public class JOLDemo1 {
                 synchronized (a){
                     out.println("thread2 locking");
                     out.println(ClassLayout.parseInstance(a).toPrintable());
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
