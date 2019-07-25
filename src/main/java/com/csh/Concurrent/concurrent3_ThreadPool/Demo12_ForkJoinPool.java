@@ -16,7 +16,10 @@ public class Demo12_ForkJoinPool {
 		for(int i=0; i<nums.length; i++) {
 			nums[i] = r.nextInt(100);
 		}
+		long start = System.currentTimeMillis();
 		System.out.println(Arrays.stream(nums).sum());
+		long end = System.currentTimeMillis();
+		System.out.println("stream 用时："+  (end - start));
 	}
 	
 	/*static class AddTask extends RecursiveAction {
@@ -74,11 +77,15 @@ public class Demo12_ForkJoinPool {
 	}
 	
 	public static void main(String[] args) {
+
+		long start = System.currentTimeMillis();
 		ForkJoinPool forkJoinPool = new ForkJoinPool();
 		AddTask task = new AddTask(0, nums.length);
 		forkJoinPool.execute(task);
 		long result = task.join();
 		System.out.println(result);
+		long end = System.currentTimeMillis();
+		System.out.println("forkJoin 用时："+  (end - start));
 
 		try {
 			TimeUnit.SECONDS.sleep(10);
