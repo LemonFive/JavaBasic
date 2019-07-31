@@ -6,13 +6,11 @@ package com.csh.basic;
  **/
 public class ThreadTest {
     public static void main(String[] args) {
-        Thread thread1 = new Thread(){
-            @Override
-            public void run() {
-                System.out.println("执行线程Thread1");
-            }
-        };
-
-        thread1.run();
+        Thread myThread = new Thread();
+        myThread.start();
+        myThread.interrupt();
+        System.out.println("第一次调用interrupt：" + Thread.interrupted());
+        System.out.println("第二次调用interrupt：" + Thread.interrupted());
+        System.out.println("END=========================================");
     }
 }

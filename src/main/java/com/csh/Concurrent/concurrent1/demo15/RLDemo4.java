@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class RLDemo4{
 
-	public static ReentrantLock lock =new ReentrantLock();
+	public static ReentrantLock lock =new ReentrantLock(true);
 	public static class EvenClass implements Runnable {
 		@Override
 		public void run() {

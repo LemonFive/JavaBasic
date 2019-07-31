@@ -1,4 +1,4 @@
-package com.csh.Concurrent.concurrent2.demo10;
+package com.csh.Concurrent.concurrent2_Queue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.DelayQueue;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * DelayQueue
  * 容器里每一个元素都设置了一个时间，时间到了才能从中提取元素
  */
-public class Demo {
+public class demo10_DelayQueue {
 
 	private static BlockingQueue<MyTask> tasks = new DelayQueue<>();
 

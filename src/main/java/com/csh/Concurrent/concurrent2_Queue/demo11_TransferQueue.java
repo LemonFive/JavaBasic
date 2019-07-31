@@ -1,4 +1,4 @@
-package com.csh.Concurrent.concurrent2.demo11;
+package com.csh.Concurrent.concurrent2_Queue;
 
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * 如果你用这种队列的话，往往是消费者先启动，生产者生产一个东西的时候，他先是去找消费者，
  * 如果有消费者就直接丢给消费者。
  */
-public class Demo {
+public class demo11_TransferQueue {
 
 	public static void main(String[] args) throws InterruptedException {
 		LinkedTransferQueue<String> strings = new LinkedTransferQueue<>();

@@ -1,4 +1,4 @@
-package com.csh.Concurrent.concurrent2.demo9;
+package com.csh.Concurrent.concurrent2_Queue;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * offer可以设置时间,如果这段时间加不进去就不加了也就是返回false
  * put方法是满了会阻塞住。
  */
-public class Demo {
+public class demo9_ArrayBlockingQueue {
 
 	private static BlockingQueue<String> strings = new ArrayBlockingQueue<>(10);
 	

@@ -1,4 +1,4 @@
-package com.csh.Concurrent.concurrent2.demo12;
+package com.csh.Concurrent.concurrent2_Queue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
@@ -9,7 +9,7 @@ import java.util.concurrent.SynchronousQueue;
  * 首先启动一个消费者，调用add方法，他报错了
  * 只能调用put，意思就是阻塞等待消费者消费。put里面其实用的是transfer，任何东西必须消费，不能往容器里面扔。
  */
-public class Demo {
+public class demo12_SynchronizedQueue {
 
 	public static void main(String[] args) throws InterruptedException {
 		BlockingQueue<String> strings = new SynchronousQueue<>();

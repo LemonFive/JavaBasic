@@ -1,4 +1,4 @@
-package com.csh.Concurrent.concurrent2.demo8;
+package com.csh.Concurrent.concurrent2_Queue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 阻塞式的容器
  *
  */
-public class Demo {
+public class demo8_LinkedBlockingQueue {
 
 	private static BlockingQueue<String> strings = new LinkedBlockingQueue<>(10);
 
