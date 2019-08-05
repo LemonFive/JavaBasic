@@ -1,7 +1,7 @@
 package workfairDemo;
 
 /**
- * @desc:  RabbitMQ工作队列
+ * @desc:  RabbitMQ 工作队列模式——Fair dispatch公平分发
  * Simple队列是异议对应的，而我们实际开发中，生产者发送消息是毫不费力的，而消费者消费一般需要和业务相结合，需要消耗时间处理。
  * 当队列积压了很多消息时，多个消费者同时处理消息。
  *
