@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * @desc:
+ * @desc:  RabbitMQ 配置连接地址
  * @author: CuiShiHao
  **/
 public class ConnectionUtil {
