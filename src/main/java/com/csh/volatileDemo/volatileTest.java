@@ -5,29 +5,34 @@ package com.csh.volatileDemo;
  * @author: CuiShiHao
  **/
 public class volatileTest {
+
+    private static int index = 0;
+    private static Object object = "";
     public static void main(String[] args) throws InterruptedException {
         // TODO Auto-generated method stub
         VolatileExample example = new VolatileExample();
-        Thread thread1 = new Thread() {
-            public void run() {
-                for (int i = 0; i < 100000; i++) {
-                    example.getAndIncrement();
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 10000; i++) {
+                synchronized (object) {
+                    index++;
                 }
             }
-        };
+        });
 
         Thread thread2=new Thread() {
             public void run(){
-                for(int i=0;i<100000;i++) {
-                    example.getAndIncrement();
+            for (int i = 0; i < 10000; i++) {
+                synchronized (object) {
+                    index++;
                 }
+            }
             }
         };
 
         thread1.start();
         thread2.start();
-        Thread.sleep(20000);//等一会，让线程都执行完。
-        System.out.println(example.get());
+        Thread.sleep(10000);//等一会，让线程都执行完。
+        System.out.println(index);
     }
 }
 

@@ -16,7 +16,7 @@ public class ConnectionUtil {
         //定义连接工厂
         ConnectionFactory factory = new ConnectionFactory();
 
-        //设置服务相关地址参数
+        //设置服务相关地址参数.gitignore
         factory.setHost("127.0.0.1");
         factory.setPort(5672);
         factory.setVirtualHost("/vhost_test");
