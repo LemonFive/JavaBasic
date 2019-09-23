@@ -25,7 +25,7 @@ public class demo9_ArrayBlockingQueue {
 		strings.add("aaaa");
 //		strings.put("aaaa");
 //		strings.offer("aaaa");
-		strings.offer("aaaa",1, TimeUnit.SECONDS);
+//		strings.offer("aaaa",1, TimeUnit.SECONDS);
 		System.out.println(strings);
 	}
 }

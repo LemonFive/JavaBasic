@@ -7,7 +7,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 
 //服务器端的业务逻辑处理类
-public class NettyServerHendler extends ChannelInboundHandlerAdapter{
+public class NettyServerHandler extends ChannelInboundHandlerAdapter{
 
 
     private int count=0;

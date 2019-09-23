@@ -16,7 +16,7 @@ public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
         //就是一个死循环，不停地检测IO事件，处理IO事件，执行任务
         //创建一个线程组:接受客户端连接   主线程
-        EventLoopGroup bossGroup=new NioEventLoopGroup(1);//cpu核心数*2
+        EventLoopGroup bossGroup=new NioEventLoopGroup(1);
         //创建一个线程组:接受网络操作   工作线程
         EventLoopGroup workerGroup=new NioEventLoopGroup();  //cpu核心数*2
 
@@ -32,12 +32,12 @@ public class NettyServer {
         .childOption(ChannelOption.SO_KEEPALIVE,true)//保持活动连接状态
         //表示服务器启动过程中，需要经过哪些流程，这里NettyTestHendler最终的顶层接口为ChannelHander，
         // 是netty的一大核心概念，表示数据流经过的处理器
-        .handler(new NettyTestHendler())
+        .handler(new NettyTestHandler())
         //表示一条新的连接进来之后，该怎么处理，也就是上面所说的，老板如何给工人配活
         .childHandler(new ChannelInitializer<NioSocketChannel>() {
             @Override
             protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
-                nioSocketChannel.pipeline().addLast(new StringDecoder(),new NettyServerHendler());
+                nioSocketChannel.pipeline().addLast(new StringDecoder(),new NettyServerHandler());
             }
         });
         System.out.println(".........server  init..........");
