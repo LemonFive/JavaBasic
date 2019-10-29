@@ -1,4 +1,4 @@
-package com.csh.ProxyTest;
+package com.csh.ProxyTest.JavaProxy;
 
 /**
  * @desc: car被代理类

@@ -1,4 +1,4 @@
-package com.csh.ProxyTest;
+package com.csh.ProxyTest.JavaProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

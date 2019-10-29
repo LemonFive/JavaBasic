@@ -1,15 +1,15 @@
-package com.csh.ProxyTest;
+package com.csh.ProxyTest.JavaProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 /**
- * @desc:
+ * @desc: JDK动态代理基于聚合
  * @author: CuiShiHao
  **/
 public class TestClass {
     public static void main(String[] args) {
-        // 动态代理测试
+        // Java动态代理测试
         Car car = new Car();
         InvocationHandler invocationHandler = new ProxyHandler(car);
         /**
