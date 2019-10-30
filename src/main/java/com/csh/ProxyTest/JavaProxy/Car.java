@@ -7,6 +7,11 @@ package com.csh.ProxyTest.JavaProxy;
 public class Car implements Moveable{
     @Override
     public void move(String num) {
-        System.out.println("汽车行驶" + num +"米");
+        System.out.println("汽车前进" + num +"米");
+    }
+
+    @Override
+    public void back(String num) {
+        System.out.println("汽车后退" + num +"米");
     }
 }

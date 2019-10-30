@@ -20,5 +20,6 @@ public class TestClass {
         Moveable moveable = (Moveable) Proxy.newProxyInstance(car.getClass().getClassLoader(),
                 car.getClass().getInterfaces(),invocationHandler);
         moveable.move("100");
+        moveable.back("100");
     }
 }
