@@ -18,6 +18,7 @@ public class demo8_LinkedBlockingQueue {
 				try {
 					// 在阻塞式容器里面加了一个方法，put，也就是如果满了就会等待，对应的方法叫take，如果空了就会等待。
 					// 这种容器我们去用的时候自动就实现了阻塞式的生产者消费者。
+					System.out.println("生产商品" + i);
 					strings.put("商品" + i);
 				} catch (Exception e) {
 					e.printStackTrace();

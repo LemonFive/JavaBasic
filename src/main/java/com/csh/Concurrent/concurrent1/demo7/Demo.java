@@ -6,13 +6,13 @@ import java.util.concurrent.TimeUnit;
 public class Demo {
 
     synchronized void test(){
-        System.out.println("demo test start........");
+        System.out.println("demo2 test start........");
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("demo test end........");
+        System.out.println("demo2 test end........");
     }
 
     public static void main(String[] args) {
