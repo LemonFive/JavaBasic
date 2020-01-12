@@ -22,7 +22,7 @@ public class Demo {
 		Map<String, String> map = new ConcurrentSkipListMap<>();
 //		Map<String, String> map = new Hashtable<>();
 
-//		Map<String, String> map = new HashMap<>();
+//		Map<String, String> map = new Map<>();
 //		Map<String, String> map1 = Collections.synchronizedMap(map);
 
 		Random random = new Random();

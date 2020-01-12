@@ -14,10 +14,13 @@ public class demo9 {
 
     public static void main(String[] args) {
         long counter = 0;
-        List<Object> list = new ArrayList<>();
+        List<Data> list = new ArrayList<>();
         while(true){
             System.out.println("第"+(++counter)+"次创建Object");
-            list.add(new Object());
+            list.add(new Data());
         }
+    }
+
+    static class Data {
     }
 }

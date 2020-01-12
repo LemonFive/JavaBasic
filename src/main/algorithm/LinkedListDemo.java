@@ -1,7 +1,3 @@
-package com.csh.basic;
-
-import java.util.Stack;
-
 class ListNode {
     int val;
     ListNode next;
@@ -15,7 +11,7 @@ class ListNode {
  * @desc:
  * @author: CuiShiHao
  **/
-public class test {
+public class LinkedListDemo {
     public static void main(String[] args) {
         ListNode first = new ListNode(1);
         ListNode second = new ListNode(2);
@@ -100,6 +96,3 @@ public class test {
         return pre;
     }
 }
-
-
-

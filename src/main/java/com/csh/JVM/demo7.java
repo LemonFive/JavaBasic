@@ -8,18 +8,18 @@ import net.sf.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * @desc: 模拟出JVM Metaspace内存溢出 （动态生成大量的类）【没成功】
+ * @desc: 模拟出JVM Metaspace内存溢出 （动态生成大量的类）
  * <p>
  * 配置参数：-XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=10m
  * @author: CuiShiHao
  **/
 public class demo7 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         long count = 0;
+
         while (true) {
-            System.out.println("目前创建了" + (++count) + "个Car类的子类了");
             Enhancer enhancer = new Enhancer();
-            enhancer.setSuperclass(SafeCar.class);
+            enhancer.setSuperclass(Car.class);
             enhancer.setUseCache(false);
             enhancer.setCallback(new MethodInterceptor() {
                 @Override
@@ -35,6 +35,8 @@ public class demo7 {
 
             Car car = (Car) enhancer.create();
             car.run();
+
+            System.out.println("目前创建了" + (++count) + "个Car类的子类了");
         }
     }
 
@@ -45,11 +47,12 @@ public class demo7 {
         }
     }
 
-    static class SafeCar extends Car{
+    static class SafeCar extends Car {
 
         @Override
         public void run() {
             System.out.println("汽车启动，开始行驶。。。");
+            super.run();
         }
 
     }
