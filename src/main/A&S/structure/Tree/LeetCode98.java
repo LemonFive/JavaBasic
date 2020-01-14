@@ -10,7 +10,7 @@ package Tree;
 public class LeetCode98 {
 
     public static void main(String[] args) {
-        boolean res = isValidBST(getTreeNode1());
+        boolean res = isValidBST(TreeNode.getTreeNode1());
         System.out.println(res);
     }
 
@@ -34,52 +34,5 @@ public class LeetCode98 {
 
         // 判断当前结点的左右子树是否满足要求
         return recursion(root.left, root.val, max) && recursion(root.right, min, root.val);
-    }
-
-
-    /**
-     * @param
-     * @return
-     * @description 输入:
-     * 2
-     * / \
-     * 1   3
-     * 输出: true
-     * @author CuiShiHao
-     * @date 2020/1/12
-     */
-    private static TreeNode getTreeNode1() {
-        TreeNode root2 = new TreeNode(2);
-        TreeNode root1 = new TreeNode(1);
-        TreeNode root3 = new TreeNode(3);
-        root2.left = root1;
-        root2.right = root3;
-        return root2;
-    }
-
-
-    /**
-     * @return
-     * @description 输入:
-     * 5
-     * / \
-     * 1   4
-     * / \
-     * 3   6
-     * 输出: false
-     * @author CuiShiHao
-     * @date 2020/1/12
-     */
-    private static TreeNode getTreeNode2() {
-        TreeNode root5 = new TreeNode(5);
-        TreeNode root1 = new TreeNode(1);
-        TreeNode root4 = new TreeNode(4);
-        TreeNode root3 = new TreeNode(3);
-        TreeNode root6 = new TreeNode(6);
-        root5.left = root1;
-        root5.right = root4;
-        root4.left = root3;
-        root4.right = root6;
-        return root5;
     }
 }
