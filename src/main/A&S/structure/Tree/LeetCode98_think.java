@@ -7,7 +7,7 @@ package Tree;
  * 所有左子树和右子树自身必须也是二叉搜索树。
  * @author: CuiShiHao
  **/
-public class LeetCode98 {
+public class LeetCode98_think {
 
     public static void main(String[] args) {
         boolean res = isValidBST(TreeNode.getTreeNode1());
