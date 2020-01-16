@@ -8,7 +8,7 @@ import java.util.List;
  * @desc: 四数之和  核心哈希表
  * @author: CuiShiHao
  **/
-public class LeetCode18 {
+public class LeetCode18_think {
 
     public static void main(String[] args) {
         int[] nums = {0, 1, 5, 0, 1, 5, 5, -4};
