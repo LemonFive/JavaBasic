@@ -19,7 +19,7 @@ public class Recv1 {
         Connection connection = ConnectionUtil.getConnetion();
 
         //从连接中获取一个通道
-        Channel channel = connection.createChannel();
+        final Channel channel = connection.createChannel();
 
         //创建队列声明
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);

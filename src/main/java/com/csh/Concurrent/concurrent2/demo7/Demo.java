@@ -3,6 +3,7 @@ package com.csh.Concurrent.concurrent2.demo7;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CountDownLatch;
 
@@ -18,8 +19,8 @@ import java.util.concurrent.CountDownLatch;
 public class Demo {
 
 	public static void main(String[] args) {
-//		Map<String, String> map = new ConcurrentHashMap<>();
-		Map<String, String> map = new ConcurrentSkipListMap<>();
+		Map<String, String> map = new ConcurrentHashMap<>();
+//		Map<String, String> map = new ConcurrentSkipListMap<>();
 //		Map<String, String> map = new Hashtable<>();
 
 //		Map<String, String> map = new Map<>();
