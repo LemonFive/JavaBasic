@@ -1,3 +1,5 @@
+package BaseDemo;
+
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -11,30 +13,31 @@ import java.util.List;
  * @desc: 消费组1
  * @author: CuiShiHao
  **/
-public class Customer2Demo {
+public class Customer1Demo {
     public static void main(String[] args) {
         new Thread() {
             @Override
             public void run() {
                 try {
                     //创建RocketMQ消费者实例对象
-                    // 消费者分组:customer_group2
-                    DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("customer_group5");
+                    // 消费者分组:customer_group1
+                    DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("customer_group1");
 
                     // 配置消费者信息
                     // 这样才能知道每个Topic的数据分散在哪些Broker机器上
                     // 然后才可以从对应的Broker上去拉取数据
-                    consumer.setNamesrvAddr("192.168.81.5:9876");
+                    consumer.setNamesrvAddr("192.168.222.5:9876");
 
                     // 选择订阅TopicTest
-                    consumer.subscribe("TopicTest", "*");
+                    consumer.subscribe("BaseDemo", "*");
 
                     //注册消息监听器，拉取订单消息回调
                     consumer.registerMessageListener(new MessageListenerConcurrently() {
                         @Override
                         public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
                             for (MessageExt msg : list) {
-                                    System.out.println(new String(msg.getBody()));
+
+                                System.out.println(msg.getBody());
                             }
                             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
                         }

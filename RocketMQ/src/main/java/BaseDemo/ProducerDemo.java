@@ -1,3 +1,5 @@
+package BaseDemo;
+
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -9,7 +11,7 @@ import org.apache.rocketmq.remoting.exception.RemotingException;
 import java.io.UnsupportedEncodingException;
 
 /**
- * @desc:
+ * @desc: 最基础的生产者消费者模式
  * @author: CuiShiHao
  **/
 public class ProducerDemo {
@@ -25,7 +27,7 @@ public class ProducerDemo {
             // 为Producer设置NameServer的地址，拉取路由信息
             // 这样才能知道每个Topic的数据分散在哪些Broker机器上
             // 然后才可以把消息发送到Broker上去
-            producer.setNamesrvAddr("192.168.81.5:9876");
+            producer.setNamesrvAddr("192.168.222.5:9876");
 
             // 启动一个Producer
             producer.start();
@@ -38,7 +40,7 @@ public class ProducerDemo {
     public static void main(String[] args) throws InterruptedException, RemotingException, MQClientException, MQBrokerException, UnsupportedEncodingException {
         //插入五条数据
         for (int i = 0; i < 5; i++) {
-            send("TopicTest", "测试生产数据" + i);
+            send("BaseDemo", "测试生产数据" + i);
         }
     }
 
