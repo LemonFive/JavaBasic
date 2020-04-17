@@ -42,7 +42,7 @@ public class ProducerDemo {
 
     public static void main(String[] args) throws InterruptedException, RemotingException, MQClientException, MQBrokerException, UnsupportedEncodingException {
         // 假设当前订单ID为1000
-        Integer orderId = 1000;
+        final Integer orderId = 1000;
         //顺序插入五条数据
         for (int i = 0; i < 5; i++) {
             Message msg = new Message("OrderlyDemo", "", ("测试顺序数据" + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
